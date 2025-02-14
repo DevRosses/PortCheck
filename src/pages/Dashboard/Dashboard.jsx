@@ -1,10 +1,8 @@
 import { useAuth } from "../../hooks/useAuth";
 import { Typography } from "@mui/material";
 import PageContainer from "../../components/ui/PageContainer";
-import Navbar from "../../components/layouts/Navbar";
 import Sidebar from "../../components/layouts/Sidebar";
-import HeaderDesktop from "../../components/layouts/HeaderDesktop";
-import HeaderMobile from "../../components/layouts/HeaderMobile";
+import Header from "../../components/layouts/Header";
 import "../../styles/pages/Dashboard/dashboard.css";
 import { useState } from "react";
 
@@ -18,14 +16,14 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Sidebar />
-      <div className="content">
-        <HeaderDesktop />
-        <HeaderMobile toggleSidebar={toggleSidebar} />
-        <Navbar />
-        <PageContainer>
-          <Typography variant="h4">Bienvenido, {user?.username}</Typography>
-        </PageContainer>
+      <Header toggleSidebar={toggleSidebar} />
+      <div className="dashboard-content">
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <main className="main-content">
+          <PageContainer>
+            <Typography variant="h4">Bienvenido, {user?.username}</Typography>
+          </PageContainer>
+        </main>
       </div>
     </div>
   );
