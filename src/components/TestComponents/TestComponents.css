@@ -1,0 +1,18 @@
+.test-container {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-gray);
+  border-radius: 12px;
+  margin: var(--spacing-lg) auto;
+  max-width: 400px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.test-container h1 {
+  color: var(--color-primary);
+}
+
+.test-container p {
+  font-size: var(--font-size-md);
+  color: var(--color-secondary);
+}
