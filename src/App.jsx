@@ -6,8 +6,6 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Containers from "./pages/Dashboard/Containers";
-import Ships from "./pages/Dashboard/Ships";
-import Seals from "./pages/Dashboard/Seals";
 import Upload from "./pages/Dashboard/Upload";
 import NotFound from "./pages/NotFound";
 
@@ -23,8 +21,6 @@ const App = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/containers" element={<Containers />} />
-            <Route path="/ships" element={<Ships />} />
-            <Route path="/seals" element={<Seals />} />
             <Route path="/upload" element={<Upload />} />
           </Route>
 

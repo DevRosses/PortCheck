@@ -8,10 +8,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState(localStorage.getItem("theme") || "dark");
+  const [mode, setMode] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     localStorage.setItem("theme", mode);
+    document.documentElement.classList.toggle("dark-mode", mode === "dark");
   }, [mode]);
 
   const toggleTheme = () => {

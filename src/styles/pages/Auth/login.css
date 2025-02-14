@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #f4f4f4;
+  background: var(--color-light);
+  color: var(--color-secondary);
 }
 
 form {
@@ -13,4 +14,18 @@ form {
   gap: 10px;
   width: 100%;
   max-width: 400px;
+  background: var(--color-light);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .login-container {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.dark-mode form {
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }

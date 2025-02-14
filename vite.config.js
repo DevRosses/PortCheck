@@ -6,4 +6,10 @@ export default defineConfig({
   esbuild: {
     loader: "jsx", // Asegura que se interprete JSX
   },
+  server: {
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp",
+    },
+  },
 });
