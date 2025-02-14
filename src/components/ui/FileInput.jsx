@@ -1,4 +1,5 @@
-import PropTypes from "prop-types"; // Para las validaciones de propiedades
+import React from "react";
+import PropTypes from "prop-types";  // Para las validaciones de propiedades
 
 const FileInput = ({ onChange, multiple }) => {
   return (
@@ -19,8 +20,8 @@ const FileInput = ({ onChange, multiple }) => {
 
 // Validación de props
 FileInput.propTypes = {
-  onChange: PropTypes.func.isRequired, // Debe ser una función
-  multiple: PropTypes.bool, // Es opcional, se usará si es necesario seleccionar múltiples archivos
+  onChange: PropTypes.func.isRequired,  // Debe ser una función
+  multiple: PropTypes.bool,  // Es opcional, se usará si es necesario seleccionar múltiples archivos
 };
 
 export default FileInput;

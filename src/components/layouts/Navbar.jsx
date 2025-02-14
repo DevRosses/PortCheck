@@ -1,10 +1,16 @@
-import "./../../styles/components/layouts/navbar.css";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import ThemeToggle from "../ui/ThemeToggle";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <h1>PortCheck</h1>
-    </nav>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          PortCheck
+        </Typography>
+        <ThemeToggle />
+      </Toolbar>
+    </AppBar>
   );
 };
 

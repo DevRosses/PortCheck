@@ -1,16 +1,12 @@
-import Navbar from "../../components/layouts/Navbar";
-import Sidebar from "../../components/layouts/Sidebar";
+import { Typography } from "@mui/material";
+import PageContainer from "../../components/ui/PageContainer";
 import "./../../styles/pages/Dashboard/containers.css";
 
 const Containers = () => {
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="content">
-        <Navbar />
-        <h2>Gestión de Contenedores</h2>
-      </div>
-    </div>
+    <PageContainer>
+      <Typography variant="h4">Gestión de Contenedores</Typography>
+    </PageContainer>
   );
 };
 

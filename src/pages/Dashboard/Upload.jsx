@@ -1,8 +1,8 @@
-import  { useState } from "react";
-import Navbar from "../../components/layouts/Navbar";
-import Sidebar from "../../components/layouts/Sidebar";
+import { useState } from "react";
+import { Typography } from "@mui/material";
 import FileInput from "../../components/ui/FileInput";
-import Button from "../../components/ui/Button";
+import CustomButton from "../../components/ui/Button";
+import PageContainer from "../../components/ui/PageContainer";
 import "../../styles/pages/Dashboard/upload.css";
 
 const Upload = () => {
@@ -24,21 +24,17 @@ const Upload = () => {
   };
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="content">
-        <Navbar />
-        <h2>Subir Fotos de Contenedores</h2>
-        <div className="upload-section">
-          <FileInput multiple onChange={handleUpload} />
-          <Button
-            text="Subir Archivos"
-            onClick={handleSubmit}
-            variant="primary"
-          />
-        </div>
+    <PageContainer>
+      <Typography variant="h4">Subir Fotos de Contenedores</Typography>
+      <div className="upload-section">
+        <FileInput multiple onChange={handleUpload} />
+        <CustomButton
+          text="Subir Archivos"
+          onClick={handleSubmit}
+          variant="primary"
+        />
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

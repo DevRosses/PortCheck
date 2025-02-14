@@ -1,16 +1,12 @@
-import Navbar from "../../components/layouts/Navbar";
-import Sidebar from "../../components/layouts/Sidebar";
+import { Typography } from "@mui/material";
+import PageContainer from "../../components/ui/PageContainer";
 import "./../../styles/pages/Dashboard/seals.css";
 
 const Seals = () => {
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="content">
-        <Navbar />
-        <h2>Gestión de Precintos</h2>
-      </div>
-    </div>
+    <PageContainer>
+      <Typography variant="h4">Gestión de Precintos</Typography>
+    </PageContainer>
   );
 };
 

@@ -1,26 +1,39 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Upload from "./pages/Dashboard/Upload";  // Asegúrate de importar las páginas
-import Login from "./pages/Auth/Login";  // Si tienes una página de login
+import { ThemeProvider } from "./context/ThemeContext";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
-function App() {
+// Páginas
+import Login from "./pages/Auth/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Containers from "./pages/Dashboard/Containers";
+import Ships from "./pages/Dashboard/Ships";
+import Seals from "./pages/Dashboard/Seals";
+import Upload from "./pages/Dashboard/Upload";
+import NotFound from "./pages/NotFound";
+
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* Ruta para la página de login */}
-        <Route path="/login" element={<Login />} />
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          {/* Rutas Públicas */}
+          <Route path="/login" element={<Login />} />
 
-        {/* Ruta para Dashboard que contiene las subrutas */}
-        <Route path="/dashboard" element={<Dashboard />}>
-          {/* Subruta para Upload dentro de Dashboard */}
-          <Route path="upload" element={<Upload />} />
-        </Route>
+          {/* Rutas Privadas (Protegidas) */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/containers" element={<Containers />} />
+            <Route path="/ships" element={<Ships />} />
+            <Route path="/seals" element={<Seals />} />
+            <Route path="/upload" element={<Upload />} />
+          </Route>
 
-        {/* Otras rutas que quieras agregar */}
-      </Routes>
-    </Router>
+          {/* Página 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;

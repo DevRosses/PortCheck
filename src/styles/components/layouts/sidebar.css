@@ -3,6 +3,11 @@
   background: #424242;
   color: white;
   padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: none;
 }
 
 .sidebar ul {
@@ -17,4 +22,10 @@
 
 .sidebar li:hover {
   background: #616161;
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .sidebar {
+    display: block;
+  }
 }

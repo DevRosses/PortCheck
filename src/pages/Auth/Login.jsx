@@ -1,10 +1,21 @@
 import { useState } from "react";
-import Input from "../../components/ui/Input";
-import Button from "../../components/ui/Button";
-import "./../../styles/pages/Auth/login.css";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { useSnackbar } from "notistack";
+import CustomButton from "../../components/ui/Button";
+import CustomTextField from "../../components/ui/TextField";
+import PageContainer from "../../components/ui/PageContainer";
+import "../../styles/pages/Auth/login.css";
 
-const Login = ({ onLogin }) => {
-  const [credentials, setCredentials] = useState({ user: "", password: "" });
+const Login = () => {
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -12,32 +23,42 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (credentials.user === "admin" && credentials.password === "1234") {
-      onLogin(true);
+    const success = login(credentials.username, credentials.password);
+    if (success) {
+      navigate("/"); // Redirige al dashboard si el login es exitoso
     } else {
-      alert("Credenciales incorrectas");
+      enqueueSnackbar("Usuario o contraseña incorrectos", { variant: "error" });
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>PortCheck</h2>
-      <form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          name="user"
-          placeholder="Usuario"
-          onChange={handleChange}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-        />
-        <Button text="Ingresar" type="submit" variant="primary" />
-      </form>
-    </div>
+    <PageContainer>
+      <div className="login-container">
+        <Typography variant="h4" gutterBottom>
+          PortCheck
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <CustomTextField
+            label="Usuario"
+            name="username"
+            value={credentials.username}
+            onChange={handleChange}
+            required
+          />
+          <CustomTextField
+            label="Contraseña"
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
+          <CustomButton type="submit" fullWidth>
+            Ingresar
+          </CustomButton>
+        </form>
+      </div>
+    </PageContainer>
   );
 };
 

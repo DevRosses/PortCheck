@@ -12,3 +12,29 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.header-desktop {
+  display: none;
+}
+
+.header-mobile {
+  display: none;
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .header-desktop {
+    display: flex;
+  }
+}
+
+@media (max-width: var(--breakpoint-md)) {
+  .header-mobile {
+    display: flex;
+  }
+}
